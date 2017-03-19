@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title></title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+    </head>
+    <body>
+        <canvas id="c" width="500" height="500"></canvas>
+        <script>
+            var c = document.querySelector("#c");
+            var context = c.getContext("2d");
+            var imageData = context.getImageData(0,0,c.width,c.height);
+            var pixels = imageData.data;
+            for (var i=0; i< pixels.length/4; i++){
+                if (i % 10 == 0){
+                    pixels[i*4] = 0;
+                    pixels[i*4 + 1] = 255;
+                    pixels[i*4 + 2] = 0;
+                    pixels[i*4 + 3] = 255;
+                }
+            }
+            context.putImageData(imageData,0,0);
+        </script>
+    </body>
+</html>

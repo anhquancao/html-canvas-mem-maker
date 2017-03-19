@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title></title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+    </head>
+    <body>
+    <canvas id="c" width="500" height="500"></canvas>
+    <script>    
+        var canvas = document.querySelector("#c");
+        var context = canvas.getContext("2d");
+      
+        var draw = function(){
+            console.log("draw");
+            context.fillStyle = "red";
+            var time = new Date().getTime();
+            var height = time % 500;
+            var width = time % 500;
+            context.fillRect(height, width, 50, 50);
+
+        }
+        var animate = function(){
+            draw();
+            requestAnimationFrame(animate);
+        }
+
+        animate();
+        
+    </script>
+    </body>
+</html>
